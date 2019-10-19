@@ -21,7 +21,7 @@ chai.use(chaiHttp)
 
 describe('*********** USERS ***********', () => {
   describe('/POST login', () => {
-    it('it should GET token', done => {
+    it('it should GET token', (done) => {
       chai
         .request(server)
         .post('/login')
@@ -36,7 +36,7 @@ describe('*********** USERS ***********', () => {
     })
   })
   describe('/GET users', () => {
-    it('it should NOT be able to consume the route since no token was sent', done => {
+    it('it should NOT be able to consume the route since no token was sent', (done) => {
       chai
         .request(server)
         .get('/users')
@@ -45,7 +45,7 @@ describe('*********** USERS ***********', () => {
           done()
         })
     })
-    it('it should GET all the users', done => {
+    it('it should GET all the users', (done) => {
       chai
         .request(server)
         .get('/users')
@@ -57,7 +57,7 @@ describe('*********** USERS ***********', () => {
           done()
         })
     })
-    it('it should GET the users with filters', done => {
+    it('it should GET the users with filters', (done) => {
       chai
         .request(server)
         .get('/users?filter=admin&fields=name,email,city,country,phone')
@@ -73,7 +73,7 @@ describe('*********** USERS ***********', () => {
     })
   })
   describe('/POST user', () => {
-    it('it should NOT POST a user without name', done => {
+    it('it should NOT POST a user without name', (done) => {
       const user = {}
       chai
         .request(server)
@@ -87,7 +87,7 @@ describe('*********** USERS ***********', () => {
           done()
         })
     })
-    it('it should POST a user ', done => {
+    it('it should POST a user ', (done) => {
       const user = {
         name: faker.random.words(),
         email,
@@ -112,7 +112,7 @@ describe('*********** USERS ***********', () => {
           done()
         })
     })
-    it('it should NOT POST a user with email that already exists', done => {
+    it('it should NOT POST a user with email that already exists', (done) => {
       const user = {
         name: faker.random.words(),
         email,
@@ -131,7 +131,7 @@ describe('*********** USERS ***********', () => {
           done()
         })
     })
-    it('it should NOT POST a user with not known role', done => {
+    it('it should NOT POST a user with not known role', (done) => {
       const user = {
         name: faker.random.words(),
         email,
@@ -152,7 +152,7 @@ describe('*********** USERS ***********', () => {
     })
   })
   describe('/GET/:id user', () => {
-    it('it should GET a user by the given id', done => {
+    it('it should GET a user by the given id', (done) => {
       const id = createdID.slice(-1).pop()
       chai
         .request(server)
@@ -168,7 +168,7 @@ describe('*********** USERS ***********', () => {
     })
   })
   describe('/PATCH/:id user', () => {
-    it('it should UPDATE a user given the id', done => {
+    it('it should UPDATE a user given the id', (done) => {
       const id = createdID.slice(-1).pop()
       const user = {
         name: 'JS123456',
@@ -197,7 +197,7 @@ describe('*********** USERS ***********', () => {
           done()
         })
     })
-    it('it should NOT UPDATE a user with email that already exists', done => {
+    it('it should NOT UPDATE a user with email that already exists', (done) => {
       const id = createdID.slice(-1).pop()
       const user = {
         name: faker.random.words(),
@@ -218,7 +218,7 @@ describe('*********** USERS ***********', () => {
     })
   })
   describe('/DELETE/:id user', () => {
-    it('it should DELETE a user given the id', done => {
+    it('it should DELETE a user given the id', (done) => {
       const user = {
         name: faker.random.words(),
         email: faker.internet.email(),
@@ -254,8 +254,8 @@ describe('*********** USERS ***********', () => {
   })
 
   after(() => {
-    createdID.forEach(id => {
-      User.findByIdAndRemove(id, err => {
+    createdID.forEach((id) => {
+      User.findByIdAndRemove(id, (err) => {
         if (err) {
           console.log(err)
         }

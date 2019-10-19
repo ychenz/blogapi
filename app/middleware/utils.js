@@ -5,7 +5,7 @@ const { validationResult } = require('express-validator')
  * Removes extension from file
  * @param {string} file - filename
  */
-exports.removeExtensionFromFile = file => {
+exports.removeExtensionFromFile = (file) => {
   return file
     .split('.')
     .slice(0, -1)
@@ -17,19 +17,19 @@ exports.removeExtensionFromFile = file => {
  * Gets IP from user
  * @param {*} req - request object
  */
-exports.getIP = req => requestIp.getClientIp(req)
+exports.getIP = (req) => requestIp.getClientIp(req)
 
 /**
  * Gets browser info from user
  * @param {*} req - request object
  */
-exports.getBrowserInfo = req => req.headers['user-agent']
+exports.getBrowserInfo = (req) => req.headers['user-agent']
 
 /**
  * Gets country from user using CloudFlare header 'cf-ipcountry'
  * @param {*} req - request object
  */
-exports.getCountry = req =>
+exports.getCountry = (req) =>
   req.headers['cf-ipcountry'] ? req.headers['cf-ipcountry'] : 'XX'
 
 /**
@@ -84,7 +84,7 @@ exports.validationResult = (req, res, next) => {
  * Builds success object
  * @param {string} message - success text
  */
-exports.buildSuccObject = message => {
+exports.buildSuccObject = (message) => {
   return {
     msg: message
   }
@@ -94,7 +94,7 @@ exports.buildSuccObject = message => {
  * Checks if given ID is good for MongoDB
  * @param {string} id - id to check
  */
-exports.isIDGood = async id => {
+exports.isIDGood = async (id) => {
   return new Promise((resolve, reject) => {
     const goodID = String(id).match(/^[0-9a-fA-F]{24}$/)
     return goodID

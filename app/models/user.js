@@ -26,15 +26,15 @@ const UserSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      enum: ['user', 'admin'],
-      default: 'user'
+      'enum': ['user', 'admin'],
+      'default': 'user'
     },
     verification: {
       type: String
     },
     verified: {
       type: Boolean,
-      default: false
+      'default': false
     },
     phone: {
       type: String
@@ -67,12 +67,12 @@ const UserSchema = new mongoose.Schema(
     },
     loginAttempts: {
       type: Number,
-      default: 0,
+      'default': 0,
       select: false
     },
     blockExpires: {
       type: Date,
-      default: Date.now,
+      'default': Date.now,
       select: false
     }
   },
