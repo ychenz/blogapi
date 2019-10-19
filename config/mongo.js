@@ -14,7 +14,7 @@ module.exports = () => {
         useNewUrlParser: true,
         useUnifiedTopology: true
       },
-      err => {
+      (err) => {
         let dbStatus = ''
         if (err) {
           dbStatus = `*    Error connecting to DB: ${err}\n****************************\n`
